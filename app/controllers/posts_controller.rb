@@ -6,9 +6,17 @@ class PostsController < ApplicationController
   end
 
   def new
+    # Postモデルのインスタンスを生成
+    @post = Post.new
   end
 
   def create
+    # postモデルのインスタンスを作成(ストロングパラメータでデータを取得)
+    @post = Post.new(post_params)
+    # セーブする
+    @post.save
+    # showページにリダイレク
+    redirect_to @post
   end
 
   def edit
@@ -19,4 +27,11 @@ class PostsController < ApplicationController
 
   def destroy
   end
+
+    # プライベートメソッドでストロングパラメータを作成
+    private
+  def post_params
+    params.require(:post).permit(:title, :body, :category)
+  end
+
 end
