@@ -24,6 +24,7 @@
       <hr>
     </div>
     <% end %>
+    <%= paginate @posts %>
   </div>
   <div class="col-md-4">
     <div class="card">
@@ -34,7 +35,7 @@
       </div>
     </div>
     <div class="list-group">
-      <% @new_post.each do |post| %>
+      <% @new_posts.each do |post| %>
         <%= link_to post.title, post, class: 'list-group-item post_title'%>
       <% end %>
     </div>
